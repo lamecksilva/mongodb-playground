@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  server:
+    build: './'
+    container_name: 'mdb-playground'
+    depends_on:
+      - 'db'
+    links:
+      - 'db'
+    ports:
+      - '9000:9000'
+    volumes:
+      - './:/usr/src/node-app'
+    command: "npm run dev"
+
+  db:
+    image: 'mongo'
+    ports:
+      - '27017:27017'

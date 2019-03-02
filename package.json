@@ -1,0 +1,29 @@
+{
+  "name": "mongodb-playground",
+  "version": "1.0.0",
+  "description": "Repository to learn and play with mongodb + nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamecksilva/mongodb-playground.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lamecksilva/mongodb-playground/issues"
+  },
+  "homepage": "https://github.com/lamecksilva/mongodb-playground#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.16"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
