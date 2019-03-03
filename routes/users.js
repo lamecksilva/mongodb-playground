@@ -49,7 +49,54 @@ router.get('/age/:age', (req, res) => {
         res.json(users);
       } else {
         // If user dont exists
-        res.json({ msg: 'User not match with this date' });
+        res.json({ msg: 'User not match with this age' });
+      }
+    })
+    .catch(err => res.json(err));
+});
+
+// @Route   POST api/users/:id
+// @desc    Find one and update
+// @access  Public
+router.post('/:id', (req, res) => {
+  User.findOneAndUpdate(
+    { _id: { $eq: req.params.id } },
+    { name: req.body.name, age: req.body.age },
+    { new: true }
+  ).then(user => {
+    if (user) {
+      res.json(user);
+    } else {
+      res.json({ msg: 'User not match with this id' });
+    }
+  });
+});
+
+// @Route   GET api/users/:id
+// @desc    Filtering search in DB by id
+// @access  Public
+router.get('/:id', (req, res) => {
+  User.findOne({ _id: req.params.id })
+    .then(user => {
+      if (user) {
+        res.json(user);
+      } else {
+        res.json({ msg: 'User not match with this id' });
+      }
+    })
+    .catch(err => res.json(err));
+});
+
+// @Route   DELETE api/users/:id
+// @desc    Delete an document by id
+// @access  Public
+router.delete('/:id', (req, res) => {
+  User.findByIdAndDelete({ _id: req.params.id })
+    .then(user => {
+      if (user) {
+        res.json(user);
+      } else {
+        res.json({ msg: 'User not found to this id' });
       }
     })
     .catch(err => res.json(err));
