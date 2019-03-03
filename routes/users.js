@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/User');
+const Cart = require('../models/Cart');
 
 // @Route   GET api/users/test
 // @desc    Testing routes

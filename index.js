@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const users = require('./routes/users');
+const cart = require('./routes/cart');
 
 app.use(bodyParser.json());
 app.use('/api/users', users);
+app.use('/api/cart', cart);
 
 mongoose
   .connect('mongodb://db:27017/mongodb-playground', {
