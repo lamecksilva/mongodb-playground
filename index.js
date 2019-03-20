@@ -1,22 +1,26 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
-const users = require('./routes/users');
+const users = require("./routes/users");
+const excel = require("./routes/excel");
 
 app.use(bodyParser.json());
-app.use('/api/users', users);
+app.use("/api/users", users);
+app.use("/api/excel", excel);
+
+
 
 mongoose
-  .connect('mongodb://db:27017/mongodb-playground', {
+  .connect("mongodb://db:27017/mongodb-playground", {
     useNewUrlParser: true
   })
-  .then(response => console.log('MongoDB Connected'))
+  .then(response => console.log("MongoDB Connected"))
   .catch(error => console.log(error));
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
+app.get("/", (req, res) => {
+  res.send("Hello World");
 });
 
 const port = process.env.PORT || 9000;
