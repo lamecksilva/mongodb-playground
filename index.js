@@ -11,6 +11,12 @@ app.use("/api/users", users);
 app.use("/api/excel", excel);
 
 
+const users = require('./routes/users');
+const cart = require('./routes/cart');
+
+app.use(bodyParser.json());
+app.use('/api/users', users);
+app.use('/api/cart', cart);
 
 mongoose
   .connect("mongodb://db:27017/mongodb-playground", {
